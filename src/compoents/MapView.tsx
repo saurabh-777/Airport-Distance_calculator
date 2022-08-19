@@ -24,7 +24,17 @@ const MapView = ({ source, destination }: IProps) => {
                 <GoogleMap
                     center={center}
                     zoom={5}
-                    mapContainerStyle={{ width: "100%", height: "100vh" }}
+                    mapContainerStyle={
+                        {
+                            position: 'relative',
+                            width: '100%',
+                            height: '50vh',
+                            margin: '40px auto 0px',
+                            overflow: 'hidden',
+                            borderRadius: '8px',
+                            boxShadow: '0px 0px 20px 6px #d0d0d0f7',
+                        }
+                    }
                 >
                     <Marker label={"Source"} position={{ lat: source.lat, lng: source.lng }} />
                     <Marker label={"Destination"} position={{ lat: destination.lat, lng: destination.lng }} />

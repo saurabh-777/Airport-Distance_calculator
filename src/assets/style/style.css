@@ -1,8 +1,131 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif !important;
 }
 
-.App {
+body {
+    padding: 30px;
+    background-color: #becdff30;
+}
+
+.main-section {
+    max-width: 1280px;
+    margin: 30px auto;
+}
+
+.main-section .MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] {
+    padding: 0px;
+}
+
+.main-section .MuiInputLabel-outlined {
+    transform: translate(14px, 12px) scale(1);
+}
+
+.main-section .MuiAutocomplete-root {
+    margin-bottom: 10px;
+    width: 320px;
+}
+
+.main-section .MuiButton-root {
+    background-color: #5895ff;
+    color: #ffffff;
+    box-shadow: none;
+    transition: all 0.3s;
+    box-shadow: 0px 0px 20px 0px #d3cfcf;
+    padding: 11px 32px;
+    text-transform: capitalize;
+}
+
+.main-section .MuiButton-root:hover {
+    background-color: #427de5;
+    color: #ffffff;
+    box-shadow: 0px 2px 22px 0px #b9b9b9ad;
+}
+
+.calculate-button {
+    padding-top: 34px;
     text-align: center;
-  }
+}
+
+.main-section .input-section {
+    box-shadow: 0px 0px 20px 4px #e3e3e3;
+    padding: 50px 30px;
+    border-radius: 6px;
+    background-color: #ffffff;
+}
+
+.main-section .distance {
+    text-align: center;
+    padding-top: 32px;
+}
+
+.main-section .input-section .distance p {
+    font-size: 20px;
+}
+
+.main-section .input-places {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-section .input-selector {
+    margin: 0px 15px;
+}
+
+.main-section .error-msg {
+    color: #ff0000;
+    font-size: 14px;
+    font-weight: 400;
+    position: relative;
+    top: -6px;
+}
+
+/* Responsive Styling */
+
+@media screen and (max-width: 992px) {
+    .main-section .input-places {
+        flex-direction: column;
+    }
+
+    .main-section .MuiAutocomplete-root {
+        margin-bottom: 14px;
+    }
+
+    .calculate-button {
+        padding-top: 24px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        padding: 20px 15px;
+    }
+
+    .main-section .input-section {
+        padding: 35px 0px;
+    }
+
+    .main-section .error-msg {
+        top: -10px;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+    .main-section .MuiAutocomplete-root {
+        width: 300px;
+    }
+
+    body {
+        padding: 10px 15px;
+    }
+}
+
+@media screen and (max-width: 361px) {
+    .main-section .MuiAutocomplete-root {
+        width: 260px;
+    }
+}
