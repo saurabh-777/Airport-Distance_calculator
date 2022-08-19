@@ -1,0 +1,85 @@
+import { useState } from 'react';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+
+import MapView from '../../compoents/MapView';
+import { SourceDestinationInterface } from "../../shared/types";
+import { USA_AIRPORTS_OPTIONS } from "../../shared/constant";
+import { calculateDistance } from "../../shared/utils";
+
+const defaultSourceDestinationConfig: SourceDestinationInterface = {
+    lat: 0,
+    lng: 0,
+    name: "",
+    errorMessage: ""
+};
+
+const Calculator = () => {
+    const [source, setSource] = useState<SourceDestinationInterface>(defaultSourceDestinationConfig)
+    const [destination, setDestination] = useState<SourceDestinationInterface>(defaultSourceDestinationConfig)
+    const [distance, setDistance] = useState<number>(0)
+
+    const handleDistanceCalculate = (lat1: number, lon1: number, lat2: number, lon2: number, unit?: string) => {
+        if (source.name && destination.name) {
+            setDistance(calculateDistance(lat1, lon1, lat2, lon2, unit))
+        } else {
+            setDistance(0)
+            if (!source.name) {
+                setSource({ ...source, errorMessage: "Please Select Source" })
+            } if (!destination.name) {
+                setDestination({ ...destination, errorMessage: "Please Select Destination" })
+            }
+        }
+    }
+
+    return (
+        <div style={{ marginTop: "30px" }}>
+            <Autocomplete
+                id="source"
+                options={USA_AIRPORTS_OPTIONS}
+                renderInput={params => (
+                    <TextField {...params} label="Source" variant="outlined" />
+                )}
+                getOptionLabel={option => option.name}
+                style={{ width: 300 }}
+                onChange={(_event, airport: any) => {
+                    if (airport) {
+                        setSource({ lat: parseFloat(airport.lat), lng: parseFloat(airport.lng), name: airport.name, errorMessage: "" })
+                    } else {
+                        setSource(defaultSourceDestinationConfig)
+                        setDistance(0)
+                    }
+                }}
+            />
+            <Typography>{source.errorMessage}</Typography>
+
+            <Autocomplete
+                id="destination"
+                options={USA_AIRPORTS_OPTIONS}
+                renderInput={params => (
+                    <TextField {...params} label="Destination" variant="outlined" />
+                )}
+                getOptionLabel={option => option.name}
+                style={{ width: 300 }}
+                onChange={(_event, airport: any) => {
+                    if (airport) {
+                        setDestination({ lat: parseFloat(airport.lat), lng: parseFloat(airport.lng), name: airport.name, errorMessage: "" })
+                    } else {
+                        setDestination(defaultSourceDestinationConfig)
+                        setDistance(0)
+                    }
+                }}
+            />
+            <Typography>{destination.errorMessage}</Typography>
+
+            <Button variant="contained" onClick={() => handleDistanceCalculate(source.lat, source.lng, destination.lat, destination.lng, "N")}>Calculate Distance</Button>
+            <Typography>Distance: {distance ? distance.toFixed(2) : distance} Nautical Miles</Typography>
+
+            <MapView source={source} destination={destination} />
+        </div>
+    )
+}
+
+export default Calculator
