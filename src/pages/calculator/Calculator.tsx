@@ -40,54 +40,53 @@ const Calculator = () => {
                 <div className='input-places'>
                     <div className='input-selector'>
                         <Autocomplete
-                        id="source"
-                        options={USA_AIRPORTS_OPTIONS}
-                        renderInput={params => (
-                            <TextField {...params} label="Source" variant="outlined" />
-                        )}
-                        getOptionLabel={option => option.name}
-                        onChange={(_event, airport: any) => {
-                            if (airport) {
-                                setSource({ lat: parseFloat(airport.lat), lng: parseFloat(airport.lng), name: airport.name, errorMessage: "" })
-                            } else {
-                                setSource(defaultSourceDestinationConfig)
-                                setDistance(0)
-                            }
-                        }}
+                            id="source"
+                            options={USA_AIRPORTS_OPTIONS}
+                            renderInput={params => (
+                                <TextField {...params} label="Source" variant="outlined" />
+                            )}
+                            getOptionLabel={option => option.name}
+                            onChange={(_event, airport: any) => {
+                                if (airport) {
+                                    setSource({ lat: parseFloat(airport.lat), lng: parseFloat(airport.lng), name: airport.name, errorMessage: "" })
+                                } else {
+                                    setSource(defaultSourceDestinationConfig)
+                                    setDistance(0)
+                                }
+                            }}
                         />
                         <Typography className='error-msg'>{source.errorMessage}</Typography>
                     </div>
                     <div className='input-selector'>
                         <Autocomplete
-                        id="destination"
-                        options={USA_AIRPORTS_OPTIONS}
-                        renderInput={params => (
-                            <TextField {...params} label="Destination" variant="outlined" />
-                        )}
-                        getOptionLabel={option => option.name}
-                        onChange={(_event, airport: any) => {
-                            if (airport) {
-                                setDestination({ lat: parseFloat(airport.lat), lng: parseFloat(airport.lng), name: airport.name, errorMessage: "" })
-                            } else {
-                                setDestination(defaultSourceDestinationConfig)
-                                setDistance(0)
-                            }
-                        }}
+                            id="destination"
+                            options={USA_AIRPORTS_OPTIONS}
+                            renderInput={params => (
+                                <TextField {...params} label="Destination" variant="outlined" />
+                            )}
+                            getOptionLabel={option => option.name}
+                            onChange={(_event, airport: any) => {
+                                if (airport) {
+                                    setDestination({ lat: parseFloat(airport.lat), lng: parseFloat(airport.lng), name: airport.name, errorMessage: "" })
+                                } else {
+                                    setDestination(defaultSourceDestinationConfig)
+                                    setDistance(0)
+                                }
+                            }}
                         />
                         <Typography className='error-msg'>{destination.errorMessage}</Typography>
                     </div>
                 </div>
-                
+
                 <div className='calculate-button'>
-                <Button variant="contained" onClick={() => handleDistanceCalculate(source.lat, source.lng, destination.lat, destination.lng, "N")}>Calculate Distance</Button>
+                    <Button variant="contained" onClick={() => handleDistanceCalculate(source.lat, source.lng, destination.lat, destination.lng, "N")}>Calculate Distance</Button>
                 </div>
-                
+
                 <div className='distance'>
                     <Typography>Distance: {distance ? distance.toFixed(2) : distance} Nautical Miles</Typography>
                 </div>
-                
             </div>
-            
+
             <MapView source={source} destination={destination} />
         </div>
     )

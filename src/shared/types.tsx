@@ -5,9 +5,3 @@ export interface SourceDestinationInterface {
     errorMessage: string;
 }
 
-export interface AirportInterface {
-    shortCode: string;
-    name: string;
-    lat: number;
-    lng: number;
-}
