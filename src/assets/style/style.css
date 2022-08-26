@@ -88,6 +88,7 @@ body {
 @media screen and (max-width: 992px) {
     .main-section .input-places {
         flex-direction: column;
+        align-items: center;
     }
 
     .main-section .MuiAutocomplete-root {
