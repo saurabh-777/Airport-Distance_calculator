@@ -67,7 +67,7 @@ body {
 
 .main-section .input-places {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
 }
 
@@ -91,7 +91,7 @@ body {
     }
 
     .main-section .MuiAutocomplete-root {
-        margin-bottom: 14px;
+        margin-bottom: 18px;
     }
 
     .calculate-button {

@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 
 import MapView from '../../compoents/MapView';
 import { SourceDestinationInterface } from "../../shared/types";
-import { USA_AIRPORTS_OPTIONS } from "../../shared/constant";
+import USA_AIRPORTS_OPTIONS from "../../shared/data/usaAirports.json";
 import { calculateDistance } from "../../shared/utils";
 
 const defaultSourceDestinationConfig: SourceDestinationInterface = {

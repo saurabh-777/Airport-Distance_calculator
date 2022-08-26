@@ -23,7 +23,7 @@ const MapView = ({ source, destination }: IProps) => {
             {isLoaded && <div>
                 <GoogleMap
                     center={center}
-                    zoom={5}
+                    zoom={4}
                     mapContainerStyle={
                         {
                             position: 'relative',
